@@ -45,5 +45,23 @@ export const SERVICES: Service[] = [
         status: 'coming_soon',
         imageUrl: '/services/cardio.jpg',
         category: 'cardiology'
+    },
+    {
+        id: 'srv-6',
+        name: 'Personalized Nutrition Planning',
+        description: 'Work with certified dietitians to create a customized meal plan prioritizing your health and energy.',
+        provider: 'Internal',
+        status: 'active',
+        imageUrl: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=600',
+        category: 'nutrition'
+    },
+    {
+        id: 'srv-7',
+        name: 'Online Core Fitness Training',
+        description: 'Join virtual guided fitness sessions that adjust to your personal health metrics and mobility.',
+        provider: 'Internal',
+        status: 'active',
+        imageUrl: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=600',
+        category: 'fitness'
     }
 ];

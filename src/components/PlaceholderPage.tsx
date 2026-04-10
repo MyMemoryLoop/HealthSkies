@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import StatCard from './StatCard';
+import { StatCard } from './StatCard';
 
 export default function PlaceholderPage() {
     const location = useLocation();
@@ -23,9 +23,9 @@ export default function PlaceholderPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <StatCard title={`Total ${title} Records`} value="1,248" trend="+12% this week" />
-                <StatCard title="Active Sessions" value="84" trend="Stable" />
-                <StatCard title="System Health" value="99.9%" trend="Optimal" />
+                <StatCard title={`Total ${title} Records`} value="1,248" trend={{ value: 12, label: '% this week' }} />
+                <StatCard title="Active Sessions" value="84" trend={{ value: 0, label: ' (Stable)' }} />
+                <StatCard title="System Health" value="99.9%" trend={{ value: 0.1, label: '% (Optimal)' }} />
             </div>
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
