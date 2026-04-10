@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
-:root {
-  --vc-blue: #4169E1;
-  --vc-dark-navy: #1A1F36;
-  --vc-white: #FFFFFF;
-  --vc-light-grey: #F0F2F5;
-  --vc-success: #22C55E;
-  --vc-warning: #F59E0B;
-  --vc-danger: #EF4444;
+@theme {
+  --color-vc-blue: #4169E1;
+  --color-vc-dark-navy: #1A1F36;
+  --color-vc-white: #FFFFFF;
+  --color-vc-light-grey: #F0F2F5;
+  --color-vc-success: #22C55E;
+  --color-vc-warning: #F59E0B;
+  --color-vc-danger: #EF4444;
 }
 
 body {
-  background-color: var(--vc-light-grey);
-  color: var(--vc-dark-navy);
+  background-color: var(--color-vc-light-grey);
+  color: var(--color-vc-dark-navy);
 }
