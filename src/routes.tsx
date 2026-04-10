@@ -2,6 +2,7 @@ import { lazy } from 'react';
 import type { RouteObject } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import RoleGuard from './layout/RoleGuard';
+import { PlaceholderPage } from './components';
 
 const LoginPage = lazy(() => import('./features/auth/LoginPage'));
 const EmployeeDashboard = lazy(() => import('./features/employee/EmployeeDashboard'));
@@ -40,7 +41,7 @@ export const routes: RouteObject[] = [
         element: <RoleGuard allowedRoles={['orgAdmin']} />,
         children: [
             { index: true, element: <OrgAdminDashboard /> },
-            { path: '*', element: <Navigate to="/org-admin" replace /> }
+            { path: '*', element: <PlaceholderPage /> }
         ],
     },
     {
@@ -48,7 +49,7 @@ export const routes: RouteObject[] = [
         element: <RoleGuard allowedRoles={['ohAdmin']} />,
         children: [
             { index: true, element: <OhAdminDashboard /> },
-            { path: '*', element: <Navigate to="/oh-admin" replace /> }
+            { path: '*', element: <PlaceholderPage /> }
         ],
     },
     {
@@ -56,7 +57,7 @@ export const routes: RouteObject[] = [
         element: <RoleGuard allowedRoles={['platformAdmin']} />,
         children: [
             { index: true, element: <PlatformAdminDashboard /> },
-            { path: '*', element: <Navigate to="/platform-admin" replace /> }
+            { path: '*', element: <PlaceholderPage /> }
         ],
     },
     { path: '*', element: <Navigate to="/" replace /> }
