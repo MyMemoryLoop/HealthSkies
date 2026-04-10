@@ -1,14 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { VidaCentricLogo } from '../../components';
 import { useAuthStore } from '../../store';
 import type { UserRole } from '../../types';
 
 export default function LoginPage() {
-    const { login } = useAuthStore();
+    const { login, isAuthenticated, role } = useAuthStore();
     const navigate = useNavigate();
     const [roleSelection, setRoleSelection] = useState<UserRole>('employee');
     const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (isAuthenticated && role) {
+            switch (role) {
+                case 'employee': navigate('/employee'); break;
+                case 'orgAdmin': navigate('/org-admin'); break;
+                case 'ohAdmin': navigate('/oh-admin'); break;
+                case 'platformAdmin': navigate('/platform-admin'); break;
+            }
+        }
+    }, [isAuthenticated, role, navigate]);
 
     const roleEmails: Record<UserRole, string> = {
         employee: 'james.wilson@acmecorp.com',
@@ -20,12 +31,6 @@ export default function LoginPage() {
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
         login(roleSelection);
-        switch (roleSelection) {
-            case 'employee': navigate('/employee'); break;
-            case 'orgAdmin': navigate('/org-admin'); break;
-            case 'ohAdmin': navigate('/oh-admin'); break;
-            case 'platformAdmin': navigate('/platform-admin'); break;
-        }
     };
 
     const handleForgotPassword = (e: React.MouseEvent) => {

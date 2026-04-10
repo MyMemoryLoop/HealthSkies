@@ -22,6 +22,7 @@ export default function TelehealthCallPage() {
             setStream(mediaStream);
             if (videoRef.current) {
                 videoRef.current.srcObject = mediaStream;
+                videoRef.current.play().catch(e => console.error("Video play failed:", e));
             }
         } catch (err) {
             console.error('Telehealth camera access denied or missing:', err);
@@ -71,10 +72,15 @@ export default function TelehealthCallPage() {
 
                 {status === 'connected' && (
                     <div className="absolute top-4 right-4 w-32 h-48 bg-gray-800 rounded-lg border border-gray-700 overflow-hidden shadow-2xl flex items-center justify-center animate-fade-in transition-all">
-                        {!isVideoMuted ? (
-                            <video ref={videoRef} autoPlay playsInline muted className="w-full h-full object-cover transform -scale-x-100" />
-                        ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-gray-900">
+                        <video
+                            ref={videoRef}
+                            autoPlay
+                            playsInline
+                            muted
+                            className={`w-full h-full object-cover transform -scale-x-100 ${isVideoMuted ? 'opacity-0' : 'opacity-100'}`}
+                        />
+                        {isVideoMuted && (
+                            <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-900">
                                 <svg className="w-12 h-12 text-gray-600 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" /></svg>
                             </div>
                         )}

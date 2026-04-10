@@ -62,8 +62,9 @@ export default function AdminSidebar() {
                     <NavLink
                         key={link.path}
                         to={link.path}
+                        end
                         className={({ isActive }) =>
-                            `px-4 py-2 rounded-lg font-medium text-sm transition-colors ${isActive ? 'bg-vc-blue text-white' : 'text-vc-dark-navy hover:bg-vc-light-grey'
+                            `px-4 py-2 rounded-lg font-medium text-sm transition-colors ${isActive ? 'bg-vc-blue text-white shadow-sm' : 'text-vc-dark-navy hover:bg-vc-light-grey'
                             }`
                         }
                     >

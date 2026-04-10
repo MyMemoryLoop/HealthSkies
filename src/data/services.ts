@@ -7,7 +7,7 @@ export const SERVICES: Service[] = [
         description: 'Comprehensive blood panel and physical assessment.',
         provider: 'Alula',
         status: 'active',
-        imageUrl: '/services/health-check.jpg',
+        imageUrl: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=600',
         category: 'general'
     },
     {
@@ -16,7 +16,7 @@ export const SERVICES: Service[] = [
         description: 'Guided psychological evaluation with a licensed therapist.',
         provider: 'Abi',
         status: 'active',
-        imageUrl: '/services/mental-health.jpg',
+        imageUrl: 'https://images.unsplash.com/photo-1520699918507-3c3e05c46b0c?auto=format&fit=crop&q=80&w=600',
         category: 'mental-health'
     },
     {
@@ -25,7 +25,7 @@ export const SERVICES: Service[] = [
         description: 'Book your seasonal influenza or travel vaccines.',
         provider: 'Internal',
         status: 'active',
-        imageUrl: '/services/vaccine.jpg',
+        imageUrl: 'https://images.unsplash.com/photo-1605289982774-9a6fef564df8?auto=format&fit=crop&q=80&w=600',
         category: 'general'
     },
     {
@@ -34,7 +34,7 @@ export const SERVICES: Service[] = [
         description: 'Advanced DNA analysis for predictive health insights.',
         provider: 'Bubl',
         status: 'coming_soon',
-        imageUrl: '/services/dna.jpg',
+        imageUrl: 'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80&w=600',
         category: 'screening'
     },
     {
@@ -43,7 +43,7 @@ export const SERVICES: Service[] = [
         description: 'Specialist review of your VidaScore heart metrics.',
         provider: 'Internal',
         status: 'coming_soon',
-        imageUrl: '/services/cardio.jpg',
+        imageUrl: 'https://images.unsplash.com/photo-1628348070830-df13f7c32b50?auto=format&fit=crop&q=80&w=600',
         category: 'cardiology'
     },
     {

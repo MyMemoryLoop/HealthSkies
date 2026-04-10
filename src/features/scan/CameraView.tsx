@@ -16,6 +16,7 @@ export default function CameraView({ onFaceDetected }: CameraViewProps) {
                 stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
                 if (videoRef.current) {
                     videoRef.current.srcObject = stream;
+                    videoRef.current.play().catch(e => console.error(e));
                 }
                 setHasPermission(true);
                 setTimeout(onFaceDetected, 1500);
