@@ -20,6 +20,10 @@ const OrgAnalyticsPage = lazy(() => import('./features/orgAdmin/OrgAnalyticsPage
 const OrgReportsPage = lazy(() => import('./features/orgAdmin/OrgReportsPage'));
 const OrgSettingsPage = lazy(() => import('./features/orgAdmin/OrgSettingsPage'));
 const OhAdminDashboard = lazy(() => import('./features/ohAdmin/OhAdminDashboard'));
+const OhClientOnboarding = lazy(() => import('./features/ohAdmin/OhClientOnboarding'));
+const OhSubscriptions = lazy(() => import('./features/ohAdmin/OhSubscriptions'));
+const OhServiceConfig = lazy(() => import('./features/ohAdmin/OhServiceConfig'));
+const OhSupport = lazy(() => import('./features/ohAdmin/OhSupport'));
 const PlatformAdminDashboard = lazy(() => import('./features/platformAdmin/PlatformAdminDashboard'));
 
 export const routes: RouteObject[] = [
@@ -57,6 +61,10 @@ export const routes: RouteObject[] = [
         element: <RoleGuard allowedRoles={['ohAdmin']} />,
         children: [
             { index: true, element: <OhAdminDashboard /> },
+            { path: 'onboarding', element: <OhClientOnboarding /> },
+            { path: 'subscriptions', element: <OhSubscriptions /> },
+            { path: 'services', element: <OhServiceConfig /> },
+            { path: 'support', element: <OhSupport /> },
             { path: '*', element: <PlaceholderPage /> }
         ],
     },

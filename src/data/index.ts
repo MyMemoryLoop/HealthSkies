@@ -8,3 +8,4 @@ export * from './notifications';
 export * from './plans';
 export * from './biDashboard';
 export * from './orgAdmin';
+export * from './ohAdmin';
