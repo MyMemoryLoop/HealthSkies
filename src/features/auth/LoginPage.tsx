@@ -40,7 +40,7 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-vc-light-grey p-4">
+        <div className="min-h-screen flex flex-col items-center justify-center p-4">
             {toastMessage && (
                 <div className="fixed top-4 bg-vc-blue text-white px-6 py-3 rounded-md shadow-lg z-50 animate-fade-in">
                     {toastMessage}
