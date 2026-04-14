@@ -47,9 +47,8 @@ export default function LoginPage() {
                 </div>
             )}
             <div className="w-full max-w-md bg-white rounded-xl shadow-sm border border-gray-100 p-8">
-                <div className="flex flex-col items-center mb-8">
-                    <VidaCentricLogo className="scale-125 mb-4" />
-                    <h1 className="text-xl font-medium text-vc-dark-navy">Healthy Skies</h1>
+                <div className="flex flex-col items-center mb-12 mt-6">
+                    <VidaCentricLogo className="scale-[2.5]" />
                 </div>
 
                 <form onSubmit={handleLogin} className="space-y-5">
