@@ -61,8 +61,6 @@ export default function LoginPage() {
                         >
                             <option value="employee">Employee</option>
                             <option value="orgAdmin">Organisation Admin (HR)</option>
-                            <option value="ohAdmin">Healthy Skies Admin</option>
-                            <option value="platformAdmin">Healthy Skies Admin</option>
                         </select>
                     </div>
 
