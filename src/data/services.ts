@@ -40,7 +40,7 @@ export const SERVICES: Service[] = [
     {
         id: 'srv-5',
         name: 'Cardiology Consultation',
-        description: 'Specialist review of your VidaScore heart metrics.',
+        description: 'Specialist review of your Wellness Score heart metrics.',
         provider: 'Internal',
         status: 'coming_soon',
         imageUrl: 'https://images.unsplash.com/photo-1628348070830-df13f7c32b50?auto=format&fit=crop&q=80&w=600',

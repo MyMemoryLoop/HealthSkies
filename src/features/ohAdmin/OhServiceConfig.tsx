@@ -7,7 +7,7 @@ export default function OhServiceConfig() {
     return (
         <div className="space-y-6 animate-fade-in">
             <header className="mb-8">
-                <h1 className="text-2xl font-bold text-vc-dark-navy">Feature Configurations</h1>
+                <h1 className="text-2xl font-bold text-vc-dark-navy font-display">Feature Configurations</h1>
                 <p className="text-gray-500 mt-1">Enable or disable premium micro-services and capabilities per organization.</p>
             </header>
 
@@ -22,7 +22,7 @@ export default function OhServiceConfig() {
                                 <button
                                     key={client.id}
                                     onClick={() => setSelectedClient(client.id)}
-                                    className={`w-full text-left p-4 text-sm font-medium transition-colors ${selectedClient === client.id ? 'bg-blue-50 text-vc-blue border-l-4 border-vc-blue' : 'text-gray-600 hover:bg-gray-50'
+                                    className={`w-full text-left p-4 text-sm font-medium transition-colors ${selectedClient === client.id ? 'bg-vc-gold-light text-vc-blue border-l-4 border-vc-blue' : 'text-gray-600 hover:bg-vc-light-grey'
                                         }`}
                                 >
                                     {client.name}

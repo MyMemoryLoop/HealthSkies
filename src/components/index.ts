@@ -1,4 +1,4 @@
-export * from './VidaCentricLogo';
+export * from './HealthySkiesLogo';
 export * from './RangeBar';
 export * from './StatCard';
 export * from './ScoreGauge';

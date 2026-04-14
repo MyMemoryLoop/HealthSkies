@@ -31,13 +31,13 @@ export default function PlaceholderPage() {
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                 <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
                     <h2 className="font-semibold text-vc-dark-navy">{title} Data Overview</h2>
-                    <button className="px-4 py-2 bg-vc-blue text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition shadow-sm">
+                    <button className="px-4 py-2 bg-vc-blue text-white text-sm font-medium rounded-lg hover:brightness-110 transition shadow-sm">
                         + Create New
                     </button>
                 </div>
                 <div className="overflow-x-auto">
                     <table className="w-full text-left whitespace-nowrap">
-                        <thead className="bg-gray-50">
+                        <thead className="bg-vc-light-grey">
                             <tr>
                                 <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
                                 <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Entity Name</th>
@@ -48,12 +48,12 @@ export default function PlaceholderPage() {
                         </thead>
                         <tbody className="divide-y divide-gray-100">
                             {mockData.map((row) => (
-                                <tr key={row.id} className="hover:bg-gray-50 transition-colors">
+                                <tr key={row.id} className="hover:bg-vc-light-grey transition-colors">
                                     <td className="px-6 py-4 text-sm text-gray-500">#{row.id}00</td>
                                     <td className="px-6 py-4 text-sm font-medium text-vc-dark-navy">{row.name}</td>
                                     <td className="px-6 py-4 text-sm">
                                         <span className={`px-2 py-1 rounded-full text-xs font-medium border ${row.status === 'Operational' ? 'bg-green-50 text-green-700 border-green-200' :
-                                            row.status === 'Syncing' ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-orange-50 text-orange-700 border-orange-200'
+                                            row.status === 'Syncing' ? 'bg-vc-gold-light text-vc-blue border-vc-blue/30' : 'bg-orange-50 text-orange-700 border-orange-200'
                                             }`}>
                                             {row.status}
                                         </span>
@@ -74,8 +74,8 @@ export default function PlaceholderPage() {
                 <div className="px-6 py-4 border-t border-gray-100 flex justify-between items-center text-sm text-gray-500 bg-gray-50/50">
                     <span>Showing 1 to 5 of 1,248 entries</span>
                     <div className="flex gap-2">
-                        <button className="px-3 py-1 border border-gray-300 rounded bg-white hover:bg-gray-50 transition-colors">Previous</button>
-                        <button className="px-3 py-1 border border-gray-300 rounded bg-white hover:bg-gray-50 transition-colors">Next</button>
+                        <button className="px-3 py-1 border border-gray-300 rounded bg-white hover:bg-vc-light-grey transition-colors">Previous</button>
+                        <button className="px-3 py-1 border border-gray-300 rounded bg-white hover:bg-vc-light-grey transition-colors">Next</button>
                     </div>
                 </div>
             </div>

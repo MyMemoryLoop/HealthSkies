@@ -4,7 +4,7 @@ export default function OrgSettingsPage() {
     return (
         <div className="space-y-6 animate-fade-in">
             <header className="mb-8">
-                <h1 className="text-2xl font-bold text-vc-dark-navy">Organisation Settings</h1>
+                <h1 className="text-2xl font-bold text-vc-dark-navy font-display">Organisation Settings</h1>
                 <p className="text-gray-500 mt-1">Manage billing, licensing, and corporate details.</p>
             </header>
 
@@ -36,7 +36,7 @@ export default function OrgSettingsPage() {
                                     <div className="bg-vc-blue h-2 rounded-full" style={{ width: '56%' }}></div>
                                 </div>
                             </div>
-                            <button className="w-full text-center text-sm font-medium text-vc-blue py-2 border border-vc-blue rounded-lg hover:bg-blue-50 transition-colors mt-2">
+                            <button className="w-full text-center text-sm font-medium text-vc-blue py-2 border border-vc-blue rounded-lg hover:bg-vc-gold-light transition-colors mt-2">
                                 Request Seat Increase
                             </button>
                         </div>
@@ -50,7 +50,7 @@ export default function OrgSettingsPage() {
                         </div>
                         <div className="overflow-x-auto">
                             <table className="w-full text-left text-sm whitespace-nowrap">
-                                <thead className="bg-gray-50 border-b border-gray-100 text-gray-500 uppercase text-xs font-semibold">
+                                <thead className="bg-vc-light-grey border-b border-gray-100 text-gray-500 uppercase text-xs font-semibold">
                                     <tr>
                                         <th className="px-6 py-4">Invoice #</th>
                                         <th className="px-6 py-4">Cycle</th>
@@ -61,7 +61,7 @@ export default function OrgSettingsPage() {
                                 </thead>
                                 <tbody className="divide-y divide-gray-100">
                                     {MOCK_ORG_INVOICES.map((inv) => (
-                                        <tr key={inv.id} className="hover:bg-gray-50 transition-colors">
+                                        <tr key={inv.id} className="hover:bg-vc-light-grey transition-colors">
                                             <td className="px-6 py-4 font-medium text-vc-dark-navy">{inv.id}</td>
                                             <td className="px-6 py-4 text-gray-600">{inv.billingCycle}</td>
                                             <td className="px-6 py-4 text-right font-medium">${inv.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>

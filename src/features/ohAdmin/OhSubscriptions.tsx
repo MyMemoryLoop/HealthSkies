@@ -4,7 +4,7 @@ export default function OhSubscriptions() {
     return (
         <div className="space-y-6 animate-fade-in">
             <header className="mb-8">
-                <h1 className="text-2xl font-bold text-vc-dark-navy">Subscription Revenue</h1>
+                <h1 className="text-2xl font-bold text-vc-dark-navy font-display">Subscription Revenue</h1>
                 <p className="text-gray-500 mt-1">Financial overview of active enterprise accounts and tier allocations.</p>
             </header>
 
@@ -29,7 +29,7 @@ export default function OhSubscriptions() {
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                 <table className="w-full text-left text-sm whitespace-nowrap">
-                    <thead className="bg-gray-50 border-b border-gray-100 text-gray-500 uppercase text-xs font-semibold">
+                    <thead className="bg-vc-light-grey border-b border-gray-100 text-gray-500 uppercase text-xs font-semibold">
                         <tr>
                             <th className="px-6 py-4">Corporate Entity</th>
                             <th className="px-6 py-4">Subscription Plan</th>
@@ -42,7 +42,7 @@ export default function OhSubscriptions() {
                             const utilized = Math.floor(client.employees * (0.6 + Math.random() * 0.3));
                             const percentage = Math.round((utilized / client.employees) * 100);
                             return (
-                                <tr key={client.id} className="hover:bg-gray-50 transition-colors">
+                                <tr key={client.id} className="hover:bg-vc-light-grey transition-colors">
                                     <td className="px-6 py-4 font-medium text-vc-dark-navy">{client.name}</td>
                                     <td className="px-6 py-4">
                                         {client.employees > 1000 ? 'Enterprise VIP' : client.employees > 400 ? 'Professional+' : 'Starter Volume'}

@@ -4,7 +4,7 @@ export default function PlatformSettings() {
     return (
         <div className="space-y-6 animate-fade-in">
             <header className="mb-8">
-                <h1 className="text-2xl font-bold text-vc-dark-navy">Infrastructure Controls</h1>
+                <h1 className="text-2xl font-bold text-vc-dark-navy font-display">Infrastructure Controls</h1>
                 <p className="text-gray-500 mt-1">Core system toggles, database shards, and master API keys.</p>
             </header>
 

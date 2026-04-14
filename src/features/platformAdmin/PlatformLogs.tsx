@@ -5,11 +5,11 @@ export default function PlatformLogs() {
         <div className="space-y-6 animate-fade-in">
             <header className="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-6">
                 <div>
-                    <h1 className="text-2xl font-bold text-vc-dark-navy">System Logs</h1>
+                    <h1 className="text-2xl font-bold text-vc-dark-navy font-display">System Logs</h1>
                     <p className="text-gray-500 mt-1">Raw telemetry and infrastructure error traces.</p>
                 </div>
                 <div className="flex gap-2">
-                    <button className="px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-lg shadow-sm hover:bg-gray-50 text-sm font-medium">Export CSV</button>
+                    <button className="px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-lg shadow-sm hover:bg-vc-light-grey text-sm font-medium">Export CSV</button>
                     <button className="px-4 py-2 bg-red-50 text-red-600 border border-red-100 rounded-lg shadow-sm hover:bg-red-100 text-sm font-medium">Clear Trace</button>
                 </div>
             </header>
@@ -30,7 +30,7 @@ export default function PlatformLogs() {
                                 }`}>
                                 [{log.level}]
                             </span>
-                            <span className="text-blue-400 shrink-0 w-32">{log.service}</span>
+                            <span className="text-vc-mid-navy shrink-0 w-32">{log.service}</span>
                             <span className="text-gray-300 group-hover:text-white transition-colors">{log.message}</span>
                         </div>
                     ))}

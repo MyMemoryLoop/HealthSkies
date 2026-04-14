@@ -20,14 +20,14 @@ export default function EmployeeDashboard() {
     return (
         <div className="space-y-6 animate-fade-in">
             <header>
-                <h1 className="text-2xl font-bold text-vc-dark-navy">{getGreeting()}, {firstName}</h1>
+                <h1 className="text-2xl font-bold text-vc-dark-navy font-display">{getGreeting()}, {firstName}</h1>
                 <p className="text-gray-500 mt-1">Insurance ID Number 4585856958</p>
             </header>
 
-            {/* VidaScore Section */}
+            {/* Wellness Score Section */}
             <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex flex-col md:flex-row items-center gap-8">
                 <div className="flex-1 text-center md:text-left">
-                    <h2 className="text-lg font-bold text-vc-dark-navy mb-2">Your VidaScore</h2>
+                    <h2 className="text-lg font-bold text-vc-dark-navy mb-2">Your Wellness Score</h2>
                     <p className="text-sm text-gray-500 mb-4 max-w-sm">
                         Based on your latest digital health scan. We recommend scanning every 2 weeks to keep your score accurate.
                     </p>
@@ -124,7 +124,7 @@ export default function EmployeeDashboard() {
                     </li>
                     {upcomingConfig.length > 0 && (
                         <li className="flex items-center gap-3 text-sm">
-                            <span className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-vc-blue shrink-0">
+                            <span className="w-8 h-8 rounded-full bg-vc-gold-light flex items-center justify-center text-vc-blue shrink-0">
                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                             </span>
                             <div className="flex-1">

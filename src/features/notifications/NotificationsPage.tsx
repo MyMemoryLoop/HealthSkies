@@ -18,7 +18,7 @@ export default function NotificationsPage() {
                 {unreadCount > 0 && (
                     <button
                         onClick={markAllAsRead}
-                        className="text-sm font-medium text-vc-blue hover:underline text-left md:text-right bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100"
+                        className="text-sm font-medium text-vc-blue hover:underline text-left md:text-right bg-vc-gold-light px-3 py-1.5 rounded-lg border border-blue-100"
                     >
                         Mark all as read
                     </button>
@@ -37,7 +37,7 @@ export default function NotificationsPage() {
                         {notifications.map(notif => (
                             <div
                                 key={notif.id}
-                                className={`p-5 flex gap-5 transition-colors group ${!notif.read ? 'bg-blue-50/20' : 'hover:bg-gray-50'}`}
+                                className={`p-5 flex gap-5 transition-colors group ${!notif.read ? 'bg-vc-gold-light/20' : 'hover:bg-vc-light-grey'}`}
                             >
                                 <div className={`w-2.5 h-2.5 rounded-full mt-2 shrink-0 shadow-sm ${!notif.read ? 'bg-vc-blue' : 'bg-transparent'}`} />
                                 <div className="flex-1">

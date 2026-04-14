@@ -24,8 +24,8 @@ export default function LoginPage() {
     const roleEmails: Record<UserRole, string> = {
         employee: 'james.wilson@acmecorp.com',
         orgAdmin: 'sarah.mitchell@acmecorp.com',
-        ohAdmin: 'karen@vidacentric.com',
-        platformAdmin: 'paul@vidacentric.com'
+        ohAdmin: 'karen@healthyskies.com',
+        platformAdmin: 'paul@healthyskies.com'
     };
 
     const handleLogin = (e: React.FormEvent) => {
@@ -49,7 +49,7 @@ export default function LoginPage() {
             <div className="w-full max-w-md bg-white rounded-xl shadow-sm border border-gray-100 p-8">
                 <div className="flex flex-col items-center mb-8">
                     <VidaCentricLogo className="scale-125 mb-4" />
-                    <h1 className="text-xl font-medium text-vc-dark-navy">One Healthcare</h1>
+                    <h1 className="text-xl font-medium text-vc-dark-navy">Healthy Skies</h1>
                 </div>
 
                 <form onSubmit={handleLogin} className="space-y-5">
@@ -62,8 +62,8 @@ export default function LoginPage() {
                         >
                             <option value="employee">Employee</option>
                             <option value="orgAdmin">Organisation Admin (HR)</option>
-                            <option value="ohAdmin">One Healthcare Admin</option>
-                            <option value="platformAdmin">VidaCentric Admin</option>
+                            <option value="ohAdmin">Healthy Skies Admin</option>
+                            <option value="platformAdmin">Healthy Skies Admin</option>
                         </select>
                     </div>
 
@@ -94,7 +94,7 @@ export default function LoginPage() {
 
                     <button
                         type="submit"
-                        className="w-full bg-vc-blue text-white font-medium py-2.5 rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+                        className="w-full bg-vc-blue text-white font-medium py-2.5 rounded-lg hover:brightness-110 transition-colors shadow-sm"
                     >
                         Sign In
                     </button>
@@ -103,7 +103,7 @@ export default function LoginPage() {
                         <button
                             type="button"
                             onClick={handleLogin}
-                            className="w-full bg-white border border-gray-300 text-gray-700 font-medium py-2.5 rounded-lg hover:bg-gray-50 transition-colors shadow-sm flex items-center justify-center gap-2"
+                            className="w-full bg-white border border-gray-300 text-gray-700 font-medium py-2.5 rounded-lg hover:bg-vc-light-grey transition-colors shadow-sm flex items-center justify-center gap-2"
                         >
                             <svg viewBox="0 0 21 21" className="w-5 h-5">
                                 <path d="M10 0L0 0 0 10 10 10 10 0Z" fill="#f35325" />

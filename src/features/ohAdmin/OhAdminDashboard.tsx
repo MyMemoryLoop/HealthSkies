@@ -9,7 +9,7 @@ export default function OhAdminDashboard() {
     return (
         <div className="space-y-6 animate-fade-in">
             <header className="mb-8">
-                <h1 className="text-2xl font-bold text-vc-dark-navy">One Healthcare Platform Admin</h1>
+                <h1 className="text-2xl font-bold text-vc-dark-navy font-display">Healthy Skies Platform Admin</h1>
                 <p className="text-gray-500 mt-1">Global vendor telemetry, active deployments, and ARR trajectory.</p>
             </header>
 
@@ -41,18 +41,18 @@ export default function OhAdminDashboard() {
                         <AreaChart data={MOCK_OH_ANALYTICS}>
                             <defs>
                                 <linearGradient id="colorScans" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor="#4169E1" stopOpacity={0.3} />
-                                    <stop offset="95%" stopColor="#4169E1" stopOpacity={0} />
+                                    <stop offset="5%" stopColor="#C8972E" stopOpacity={0.3} />
+                                    <stop offset="95%" stopColor="#C8972E" stopOpacity={0} />
                                 </linearGradient>
                             </defs>
-                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" />
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#EDE9E0" />
                             <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: '#9CA3AF', fontSize: 12 }} dy={10} />
                             <YAxis axisLine={false} tickLine={false} tick={{ fill: '#9CA3AF', fontSize: 12 }} dx={-10} />
                             <Tooltip
                                 contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
-                                itemStyle={{ color: '#4169E1', fontWeight: 600 }}
+                                itemStyle={{ color: '#C8972E', fontWeight: 600 }}
                             />
-                            <Area type="monotone" dataKey="globalScans" name="Global Server Scans" stroke="#4169E1" strokeWidth={3} fillOpacity={1} fill="url(#colorScans)" />
+                            <Area type="monotone" dataKey="globalScans" name="Global Server Scans" stroke="#C8972E" strokeWidth={3} fillOpacity={1} fill="url(#colorScans)" />
                         </AreaChart>
                     </ResponsiveContainer>
                 </div>

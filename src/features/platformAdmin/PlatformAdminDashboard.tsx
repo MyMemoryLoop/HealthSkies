@@ -6,7 +6,7 @@ export default function PlatformAdminDashboard() {
     return (
         <div className="space-y-6 animate-fade-in">
             <header className="mb-8">
-                <h1 className="text-2xl font-bold text-vc-dark-navy">VidaCentric Super Admin</h1>
+                <h1 className="text-2xl font-bold text-vc-dark-navy font-display">Healthy Skies Platform Admin</h1>
                 <p className="text-gray-500 mt-1">Root access telemetry, multi-tenant global monitoring, and active API loads.</p>
             </header>
 

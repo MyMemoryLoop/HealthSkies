@@ -5,8 +5,8 @@ export default function PlatformTenants() {
         <div className="space-y-6 animate-fade-in">
             <header className="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-8">
                 <div>
-                    <h1 className="text-2xl font-bold text-vc-dark-navy">Root Tenant Clusters</h1>
-                    <p className="text-gray-500 mt-1">Manage top-level Master Vendors (e.g. One Healthcare) deploying VidaCentric codebases.</p>
+                    <h1 className="text-2xl font-bold text-vc-dark-navy font-display">Root Tenant Clusters</h1>
+                    <p className="text-gray-500 mt-1">Manage top-level Master Vendors (e.g. Healthy Skies) deploying Healthy Skies codebases.</p>
                 </div>
                 <button className="bg-vc-dark-navy text-white px-4 py-2 rounded-lg font-medium shadow-sm hover:bg-slate-800 transition-colors border border-slate-700">
                     Propagate Patch

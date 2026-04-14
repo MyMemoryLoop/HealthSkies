@@ -10,7 +10,7 @@ export default function ScanHistoryPage() {
     return (
         <div className="space-y-6 animate-fade-in max-w-5xl mx-auto">
             <header className="mb-8">
-                <h1 className="text-2xl font-bold text-vc-dark-navy">Scan History</h1>
+                <h1 className="text-2xl font-bold text-vc-dark-navy font-display">Scan History</h1>
                 <p className="text-gray-500 mt-1">Review your past digital health assessments</p>
             </header>
 

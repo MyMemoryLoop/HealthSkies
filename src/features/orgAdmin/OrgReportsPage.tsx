@@ -10,14 +10,14 @@ export default function OrgReportsPage() {
     return (
         <div className="space-y-6 animate-fade-in">
             <header className="mb-8">
-                <h1 className="text-2xl font-bold text-vc-dark-navy">Corporate Reports</h1>
+                <h1 className="text-2xl font-bold text-vc-dark-navy font-display">Corporate Reports</h1>
                 <p className="text-gray-500 mt-1">Download monthly and quarterly aggregated demographic health insights.</p>
             </header>
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                 <div className="divide-y divide-gray-100">
                     {reports.map(report => (
-                        <div key={report.id} className="p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-gray-50 transition-colors">
+                        <div key={report.id} className="p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-vc-light-grey transition-colors">
                             <div className="flex items-start gap-4">
                                 <div className="w-10 h-10 rounded-lg bg-red-50 text-red-500 flex items-center justify-center shrink-0">
                                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -29,7 +29,7 @@ export default function OrgReportsPage() {
                                     <p className="text-sm text-gray-500 mt-1">Generated {report.date} • PDF ({report.size})</p>
                                 </div>
                             </div>
-                            <button className="px-4 py-2 text-sm font-medium text-vc-blue border border-vc-blue rounded-lg hover:bg-blue-50 transition-colors flex items-center gap-2 shrink-0 self-start md:self-auto">
+                            <button className="px-4 py-2 text-sm font-medium text-vc-blue border border-vc-blue rounded-lg hover:bg-vc-gold-light transition-colors flex items-center gap-2 shrink-0 self-start md:self-auto">
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                                 </svg>

@@ -5,7 +5,7 @@ export default function PlatformApi() {
     return (
         <div className="space-y-6 animate-fade-in">
             <header className="mb-8">
-                <h1 className="text-2xl font-bold text-vc-dark-navy">API Traffic Diagnostics</h1>
+                <h1 className="text-2xl font-bold text-vc-dark-navy font-display">API Traffic Diagnostics</h1>
                 <p className="text-gray-500 mt-1">Real-time edge gateway metrics, latency tracking, and request volumes.</p>
             </header>
 

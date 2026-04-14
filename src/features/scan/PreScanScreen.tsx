@@ -19,7 +19,7 @@ export default function PreScanScreen({ onStart }: PreScanScreenProps) {
             <div className="space-y-4 w-full">
                 <button
                     onClick={onStart}
-                    className="w-full bg-vc-blue text-white font-bold py-3 rounded-xl hover:bg-blue-600 transition-colors shadow-lg shadow-vc-blue/30"
+                    className="w-full bg-vc-blue text-white font-bold py-3 rounded-xl hover:brightness-110 transition-colors shadow-lg shadow-vc-blue/20"
                 >
                     Begin Scan
                 </button>

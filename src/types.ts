@@ -48,7 +48,7 @@ export interface EnterpriseClient {
     plan: 'starter' | 'enterprise' | 'enterprisePlus';
     status: 'active' | 'onboarding' | 'suspended';
     joinedDate: string;
-    avgVidaScore: number | null;
+    avgWellnessScore: number | null;
     participationRate: number;
     scansThisMonth: number;
 }

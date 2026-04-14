@@ -10,7 +10,7 @@ export default function ServicesPage() {
     return (
         <div className="space-y-6 animate-fade-in max-w-6xl mx-auto">
             <header className="mb-8">
-                <h1 className="text-2xl font-bold text-vc-dark-navy">Health Services</h1>
+                <h1 className="text-2xl font-bold text-vc-dark-navy font-display">Health Services</h1>
                 <p className="text-gray-500 mt-1">Explore wellness and medical services provided by your organization</p>
             </header>
 
@@ -27,7 +27,7 @@ export default function ServicesPage() {
                         onClick={() => setCategory(cat.id as any)}
                         className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${category === cat.id
                             ? 'bg-vc-dark-navy text-white shadow-sm'
-                            : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
+                            : 'bg-white border border-gray-200 text-gray-600 hover:bg-vc-light-grey'
                             }`}
                     >
                         {cat.label}

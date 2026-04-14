@@ -20,7 +20,7 @@ export default function ScanComplete({ onViewReport }: ScanCompleteProps) {
 
             <button
                 onClick={onViewReport}
-                className="w-full max-w-xs bg-vc-blue text-white font-bold py-3.5 rounded-xl hover:bg-blue-600 transition-colors shadow-lg shadow-vc-blue/20"
+                className="w-full max-w-xs bg-vc-blue text-white font-bold py-3.5 rounded-xl hover:brightness-110 transition-colors shadow-lg shadow-vc-blue/20"
             >
                 View Report
             </button>

@@ -3,13 +3,13 @@ export const BI_DASHBOARD_DATA = {
         totalActiveClients: 3,
         totalEmployees: 848,
         totalScans: 12847,
-        avgVidaScore: 69,
+        avgWellnessScore: 69,
         revenueThisMonth: 14280,
         apiUptime: 99.97,
         avgResponseTime: 142
     },
     clientAcme: {
-        avgVidaScore: 72,
+        avgWellnessScore: 72,
         participationRate: 84,
         scansThisMonth: 156,
         scanCompletion: 89,

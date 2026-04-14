@@ -53,7 +53,7 @@ export default function ScanProgress({ onComplete }: ScanProgressProps) {
                 </div>
                 <div className="flex items-center gap-3">
                     <StatusIcon done={progress >= 80} active={progress >= 60 && progress < 80} />
-                    <span className={progress >= 80 ? 'text-white' : 'text-gray-400'}>Generating VidaScore</span>
+                    <span className={progress >= 80 ? 'text-white' : 'text-gray-400'}>Generating Wellness Score</span>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ export default function HealthProfilePage() {
     return (
         <div className="space-y-6 animate-fade-in max-w-4xl mx-auto pb-8">
             <header className="mb-8">
-                <h1 className="text-2xl font-bold text-vc-dark-navy">Health Profile</h1>
+                <h1 className="text-2xl font-bold text-vc-dark-navy font-display">Health Profile</h1>
                 <p className="text-gray-500 mt-1">Manage your personal health information and settings</p>
             </header>
 
@@ -18,11 +18,11 @@ export default function HealthProfilePage() {
                 <div className="flex-1 text-center md:text-left">
                     <h2 className="text-xl font-bold text-vc-dark-navy">{user.name}</h2>
                     <p className="text-gray-500">{user.email}</p>
-                    <div className="mt-3 inline-flex items-center text-xs font-bold uppercase tracking-wider text-vc-blue bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+                    <div className="mt-3 inline-flex items-center text-xs font-bold uppercase tracking-wider text-vc-blue bg-vc-gold-light px-3 py-1 rounded-full border border-blue-100">
                         Employee • {user.clientId?.toUpperCase() || 'UNKNOWN'}
                     </div>
                 </div>
-                <button className="bg-white border border-gray-200 text-vc-dark-navy px-6 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors w-full md:w-auto mt-4 md:mt-0 shadow-sm">
+                <button className="bg-white border border-gray-200 text-vc-dark-navy px-6 py-2 rounded-lg font-medium hover:bg-vc-light-grey transition-colors w-full md:w-auto mt-4 md:mt-0 shadow-sm">
                     Edit Profile
                 </button>
             </div>
@@ -49,7 +49,7 @@ export default function HealthProfilePage() {
             </div>
 
             <div className="mt-8 text-center">
-                <p className="text-xs text-gray-400">Profile data is securely stored and follows VidaCentric privacy guidelines.</p>
+                <p className="text-xs text-gray-400">Profile data is securely stored and follows Healthy Skies privacy guidelines.</p>
             </div>
         </div>
     );

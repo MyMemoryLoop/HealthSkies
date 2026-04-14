@@ -4,13 +4,13 @@ export const DEMO_USERS: User[] = [
     {
         id: 'user-psa',
         name: 'Paul Gordon',
-        email: 'paul@vidacentric.com',
+        email: 'paul@healthyskies.com',
         role: 'platformAdmin',
     },
     {
         id: 'user-oha',
         name: 'Karen Storey',
-        email: 'karen@vidacentric.com',
+        email: 'karen@healthyskies.com',
         role: 'ohAdmin',
     },
     {

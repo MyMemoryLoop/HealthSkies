@@ -1,5 +1,5 @@
 export const MOCK_TENANTS = [
-    { id: 'T-001', name: 'One Healthcare', region: 'us-east-1', instances: 42, status: 'Healthy', version: 'v2.4.1' },
+    { id: 'T-001', name: 'Healthy Skies', region: 'us-east-1', instances: 42, status: 'Healthy', version: 'v2.4.1' },
     { id: 'T-002', name: 'Global Wellness Alliance', region: 'eu-west-1', instances: 18, status: 'Healthy', version: 'v2.4.1' },
     { id: 'T-003', name: 'Pacific Health Co.', region: 'ap-southeast-2', instances: 8, status: 'Degraded', version: 'v2.4.0' },
     { id: 'T-004', name: 'MediScan Enterprise', region: 'us-west-2', instances: 24, status: 'Healthy', version: 'v2.4.1' },

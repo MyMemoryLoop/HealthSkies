@@ -9,7 +9,7 @@ export default function OrgAdminDashboard() {
     return (
         <div className="space-y-6 animate-fade-in">
             <header className="mb-8">
-                <h1 className="text-2xl font-bold text-vc-dark-navy">Organisation Dashboard</h1>
+                <h1 className="text-2xl font-bold text-vc-dark-navy font-display">Organisation Dashboard</h1>
                 <p className="text-gray-500 mt-1">Enterprise wellness tracking and employee adoption overview.</p>
             </header>
 
@@ -40,14 +40,14 @@ export default function OrgAdminDashboard() {
                     <div className="h-[300px] w-full">
                         <ResponsiveContainer width="100%" height="100%">
                             <LineChart data={MOCK_ORG_ANALYTICS}>
-                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" />
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#EDE9E0" />
                                 <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: '#9CA3AF', fontSize: 12 }} dy={10} />
                                 <YAxis axisLine={false} tickLine={false} tick={{ fill: '#9CA3AF', fontSize: 12 }} dx={-10} />
                                 <Tooltip
                                     contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
-                                    itemStyle={{ color: '#4169E1', fontWeight: 600 }}
+                                    itemStyle={{ color: '#C8972E', fontWeight: 600 }}
                                 />
-                                <Line type="monotone" dataKey="scansCompleted" name="Scans" stroke="#4169E1" strokeWidth={3} dot={{ r: 4, strokeWidth: 2 }} activeDot={{ r: 6 }} />
+                                <Line type="monotone" dataKey="scansCompleted" name="Scans" stroke="#C8972E" strokeWidth={3} dot={{ r: 4, strokeWidth: 2 }} activeDot={{ r: 6 }} />
                             </LineChart>
                         </ResponsiveContainer>
                     </div>
@@ -58,11 +58,11 @@ export default function OrgAdminDashboard() {
                     <div className="h-[300px] w-full">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={MOCK_ORG_DEPARTMENTS} layout="vertical">
-                                <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#E5E7EB" />
+                                <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#EDE9E0" />
                                 <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: '#9CA3AF', fontSize: 12 }} />
                                 <YAxis type="category" dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#4B5563', fontSize: 12, fontWeight: 500 }} width={100} />
                                 <Tooltip
-                                    cursor={{ fill: '#F3F4F6' }}
+                                    cursor={{ fill: '#F8F6F1' }}
                                     contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
                                     formatter={(value: any) => [`${value}%`, 'Participation']}
                                 />

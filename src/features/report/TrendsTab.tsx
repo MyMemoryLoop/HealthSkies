@@ -26,7 +26,7 @@ export default function TrendsTab({ history }: { history: ScanResult[] }) {
             </div>
 
             <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
-                <h3 className="font-bold text-vc-dark-navy mb-6">VidaScore History</h3>
+                <h3 className="font-bold text-vc-dark-navy mb-6">Wellness Score History</h3>
                 <div className="h-64 w-full">
                     <ResponsiveContainer width="100%" height="100%">
                         <LineChart data={chartData}>

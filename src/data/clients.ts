@@ -9,7 +9,7 @@ export const DEMO_CLIENTS: EnterpriseClient[] = [
         plan: 'enterprisePlus',
         status: 'active',
         joinedDate: '2026-01-15',
-        avgVidaScore: 72,
+        avgWellnessScore: 72,
         participationRate: 84,
         scansThisMonth: 156
     },
@@ -21,7 +21,7 @@ export const DEMO_CLIENTS: EnterpriseClient[] = [
         plan: 'enterprise',
         status: 'active',
         joinedDate: '2025-11-01',
-        avgVidaScore: 68,
+        avgWellnessScore: 68,
         participationRate: 71,
         scansThisMonth: 289
     },
@@ -33,7 +33,7 @@ export const DEMO_CLIENTS: EnterpriseClient[] = [
         plan: 'starter',
         status: 'onboarding',
         joinedDate: '2026-03-10',
-        avgVidaScore: null,
+        avgWellnessScore: null,
         participationRate: 12,
         scansThisMonth: 8
     }
