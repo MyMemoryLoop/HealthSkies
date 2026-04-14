@@ -43,7 +43,7 @@ export const SERVICES: Service[] = [
         description: 'Specialist review of your Wellness Score heart metrics.',
         provider: 'Internal',
         status: 'coming_soon',
-        imageUrl: 'https://images.unsplash.com/photo-1628348070830-df13f7c32b50?auto=format&fit=crop&q=80&w=600',
+        imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600',
         category: 'cardiology'
     },
     {
