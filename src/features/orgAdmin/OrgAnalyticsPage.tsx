@@ -30,14 +30,14 @@ export default function OrgAnalyticsPage() {
                 <div className="h-[400px] w-full">
                     <ResponsiveContainer width="100%" height="100%">
                         <LineChart data={MOCK_ORG_ANALYTICS}>
-                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#EDE9E0" />
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E5E5" />
                             <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: '#9CA3AF', fontSize: 12 }} dy={10} />
                             <YAxis axisLine={false} tickLine={false} tick={{ fill: '#9CA3AF', fontSize: 12 }} dx={-10} />
                             <Tooltip
                                 contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
-                                itemStyle={{ color: '#C8972E', fontWeight: 600 }}
+                                itemStyle={{ color: '#00843D', fontWeight: 600 }}
                             />
-                            <Line type="monotone" dataKey="scansCompleted" name="Total Scans" stroke="#C8972E" strokeWidth={3} dot={{ r: 4, strokeWidth: 2 }} activeDot={{ r: 6 }} />
+                            <Line type="monotone" dataKey="scansCompleted" name="Total Scans" stroke="#00843D" strokeWidth={3} dot={{ r: 4, strokeWidth: 2 }} activeDot={{ r: 6 }} />
                             <Line type="monotone" dataKey="activeUsers" name="Active Users" stroke="#22C55E" strokeWidth={3} dot={{ r: 4, strokeWidth: 2 }} />
                         </LineChart>
                     </ResponsiveContainer>

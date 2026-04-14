@@ -3,24 +3,25 @@
 @theme {
   --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --color-vc-blue: #C8972E;
-  --color-vc-dark-navy: #1B2E5A;
+  --color-vc-blue: #00843D;
+  --color-vc-dark-navy: #111111;
   --color-vc-white: #FFFFFF;
-  --color-vc-light-grey: #F8F6F1;
+  --color-vc-light-grey: #F5F5F5;
   --color-vc-success: #22C55E;
   --color-vc-warning: #F59E0B;
-  --color-vc-danger: #EF4444;
-  --color-vc-gold-light: #F5EDD8;
-  --color-vc-sand: #EDE9E0;
-  --color-vc-mid-navy: #2A4A7F;
+  --color-vc-danger: #C8102E;
+  --color-vc-gold-light: #E6F4EC;
+  --color-vc-sand: #E5E5E5;
+  --color-vc-mid-navy: #333333;
+  --color-vc-red: #C8102E;
 }
 
 .border-gray-100 {
-  border-color: #EDE9E0 !important;
+  border-color: #E5E5E5 !important;
 }
 
 .border-gray-200 {
-  border-color: #DDD8CD !important;
+  border-color: #D4D4D4 !important;
 }
 
 body {
