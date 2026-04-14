@@ -83,12 +83,12 @@ export default function EmployeeDashboard() {
             <section>
                 <h2 className="text-lg font-bold text-vc-dark-navy mb-4">Quick Actions</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <Link to="/employee/scan" className="bg-vc-dark-navy text-white rounded-xl p-5 hover:opacity-90 transition-opacity group flex flex-col h-full">
-                        <div className="bg-white/10 w-10 h-10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <Link to="/employee/scan" className="bg-white border border-gray-200 text-vc-dark-navy rounded-xl p-5 hover:bg-vc-light-grey transition-colors group flex flex-col h-full">
+                        <div className="bg-gray-100 text-vc-blue w-10 h-10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                         </div>
                         <h3 className="font-semibold text-lg">Health Scan</h3>
-                        <p className="text-white/70 text-sm mt-1">Takes about 60 seconds</p>
+                        <p className="text-gray-500 text-sm mt-1">Takes about 60 seconds</p>
                     </Link>
 
                     <Link to="/employee/report/latest" className="bg-white border border-gray-200 text-vc-dark-navy rounded-xl p-5 hover:bg-vc-light-grey transition-colors group flex flex-col h-full">
