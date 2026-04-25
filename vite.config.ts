@@ -11,6 +11,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'script',
+      includeAssets: ['healthyskies-uae-logo.png', 'favicon.svg'],
       manifest: {
         name: 'One Healthcare',
         short_name: 'OneHealth',
