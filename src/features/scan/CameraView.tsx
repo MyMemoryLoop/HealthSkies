@@ -99,11 +99,15 @@ export default function CameraView({ onFaceDetected }: CameraViewProps) {
             ctx.fill();
         });
 
-        // "SCANNING" label below brackets
+        // "SCANNING" label below brackets (un-mirrored to counteract CSS scaleX)
+        ctx.save();
+        ctx.translate(bx + bw / 2, by + bh + 18);
+        ctx.scale(-1, 1);
         ctx.font = 'bold 11px monospace';
         ctx.fillStyle = '#4FC3F7CC';
         ctx.textAlign = 'center';
-        ctx.fillText('SCANNING', bx + bw / 2, by + bh + 18);
+        ctx.fillText('SCANNING', 0, 0);
+        ctx.restore();
     }, []);
 
     // Detection loop — runs at ~15fps to save battery on mobile
@@ -197,7 +201,7 @@ export default function CameraView({ onFaceDetected }: CameraViewProps) {
     }
 
     return (
-        <div className="relative w-full flex-1 aspect-[3/4] bg-vc-dark-navy overflow-hidden">
+        <div className="absolute inset-0 w-full h-full bg-vc-dark-navy overflow-hidden">
 
             {/* Model loading overlay */}
             {isModelLoading && (
@@ -214,14 +218,14 @@ export default function CameraView({ onFaceDetected }: CameraViewProps) {
                 playsInline
                 muted
                 style={{ transform: 'scaleX(-1)' }}
-                className="w-full h-full object-cover opacity-90 scale-105"
+                className="absolute inset-0 w-full h-full object-cover opacity-90"
             />
 
             {/* Detection canvas — mirrored to match video */}
             <canvas
                 ref={canvasRef}
                 style={{ transform: 'scaleX(-1)' }}
-                className="absolute inset-0 w-full h-full pointer-events-none"
+                className="absolute inset-0 w-full h-full object-cover pointer-events-none"
             />
 
             {/* Dim oval guide when no face present yet */}
