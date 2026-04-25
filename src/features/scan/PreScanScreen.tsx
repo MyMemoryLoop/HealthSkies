@@ -11,23 +11,40 @@ export default function PreScanScreen({ onStart }: PreScanScreenProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
             </div>
-            <h2 className="text-2xl font-bold mb-4">Digital Health Scan</h2>
-            <p className="text-gray-300 mb-8 leading-relaxed">
-                Position your face within the frame. The scan takes approximately 60 seconds. Ensure good lighting and hold your device steady.
+
+            <h2 className="text-2xl font-bold mb-3">Digital Health Scan</h2>
+            <p className="text-gray-300 mb-6 leading-relaxed text-sm">
+                Position your face in the frame and hold still for approximately 60 seconds.
+                Ensure good lighting and keep your device steady.
             </p>
 
-            <div className="space-y-4 w-full">
+            {/* Camera consent note — shown before the permission prompt fires */}
+            <div className="w-full bg-white/10 rounded-xl p-4 mb-8 text-left">
+                <p className="text-xs text-gray-400 leading-relaxed flex gap-2">
+                    <svg className="w-4 h-4 text-vc-blue shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    <span>
+                        <strong className="text-gray-300">Camera required.</strong> Your browser will ask for permission.
+                        No video is recorded, stored, or transmitted — analysis happens entirely on your device.
+                    </span>
+                </p>
+            </div>
+
+            <div className="space-y-3 w-full">
                 <button
                     onClick={onStart}
                     className="w-full bg-vc-blue text-white font-bold py-3 rounded-xl hover:brightness-110 transition-colors shadow-lg shadow-vc-blue/20"
                 >
                     Begin Scan
                 </button>
+
+                {/* Clearly labelled skip — goes to demo results without touching camera */}
                 <button
                     onClick={onStart}
-                    className="w-full bg-white/10 text-white font-medium py-3 rounded-xl hover:bg-white/20 transition-colors"
+                    className="w-full bg-white/10 text-gray-400 text-sm font-medium py-2.5 rounded-xl hover:bg-white/20 transition-colors"
                 >
-                    Skip to demo results
+                    Skip — view example results
                 </button>
             </div>
         </div>

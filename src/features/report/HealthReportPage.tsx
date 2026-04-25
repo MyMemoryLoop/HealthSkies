@@ -59,6 +59,20 @@ export default function HealthReportPage() {
             </header>
 
             <main className="flex-1 p-4 md:p-8 bg-vc-light-grey overflow-y-auto">
+                {/* Add this block at the top of the <main> element, before the tab switcher content */}
+                <div className="max-w-5xl mx-auto mb-6">
+                    <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 flex gap-3 items-start">
+                        <svg className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p className="text-sm text-amber-800 leading-relaxed">
+                            <strong>This is a demonstration.</strong> The figures shown are illustrative examples
+                            and do not reflect your actual health data. Always consult a qualified clinician for
+                            health advice.
+                        </p>
+                    </div>
+                </div>
+
                 <div className="max-w-5xl mx-auto h-full">
                     {activeTab === 'Summary' && <ReportSummary user={user} scan={scan} />}
                     {activeTab === 'Heart Health' && <HeartHealthTab metrics={scan.heartHealth} />}

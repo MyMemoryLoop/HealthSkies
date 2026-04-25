@@ -9,6 +9,7 @@ import ScanComplete from './ScanComplete';
 
 export default function HealthScanPage() {
     const [phase, setPhase] = useState<'pre' | 'scanning' | 'complete'>('pre');
+    const [faceConfirmed, setFaceConfirmed] = useState(false);
     const navigate = useNavigate();
 
     const user = useAuthStore(state => state.user);
@@ -34,7 +35,9 @@ export default function HealthScanPage() {
         navigate('/employee/report/latest');
     }, [resetScan, navigate]);
 
-    const handleFaceDetected = useCallback(() => { }, []);
+    const handleFaceDetected = useCallback(() => {
+        setFaceConfirmed(true);
+    }, []);
 
     return (
         <div className="w-full max-w-md mx-auto min-h-[calc(100vh-8rem)] flex flex-col bg-vc-dark-navy text-white rounded-2xl overflow-hidden shadow-xl animate-fade-in relative snap-start">
@@ -43,7 +46,7 @@ export default function HealthScanPage() {
                 <>
                     <CameraView onFaceDetected={handleFaceDetected} />
                     <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-vc-dark-navy to-transparent pointer-events-none" />
-                    <ScanProgress onComplete={handleComplete} />
+                    <ScanProgress onComplete={handleComplete} faceConfirmed={faceConfirmed} />
                 </>
             )}
             {phase === 'complete' && <ScanComplete onViewReport={handleViewReport} />}

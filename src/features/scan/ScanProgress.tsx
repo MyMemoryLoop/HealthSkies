@@ -3,9 +3,10 @@ import { useScanStore } from '../../store';
 
 interface ScanProgressProps {
     onComplete: () => void;
+    faceConfirmed?: boolean;
 }
 
-export default function ScanProgress({ onComplete }: ScanProgressProps) {
+export default function ScanProgress({ onComplete, faceConfirmed = false }: ScanProgressProps) {
     const { progress, setProgress } = useScanStore();
 
     useEffect(() => {
@@ -40,8 +41,8 @@ export default function ScanProgress({ onComplete }: ScanProgressProps) {
 
             <div className="space-y-2 text-sm">
                 <div className="flex items-center gap-3">
-                    <StatusIcon done={progress >= 10} active={progress > 0 && progress < 10} />
-                    <span className={progress >= 10 ? 'text-white' : 'text-gray-400'}>Face detected</span>
+                    <StatusIcon done={faceConfirmed} active={!faceConfirmed} />
+                    <span className={faceConfirmed ? 'text-white' : 'text-gray-400'}>Face detected</span>
                 </div>
                 <div className="flex items-center gap-3">
                     <StatusIcon done={progress >= 30} active={progress >= 10 && progress < 30} />
