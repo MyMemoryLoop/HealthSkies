@@ -24,24 +24,6 @@ export default defineConfig({
           { src: '/favicon.svg', sizes: '192x192', type: 'image/svg+xml' },
           { src: '/favicon.svg', sizes: '512x512', type: 'image/svg+xml' }
         ]
-      },
-      workbox: {
-        runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/(tfhub\.dev|storage\.googleapis\.com)\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'tfjs-models-cache',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
-              },
-              cacheableResponse: {
-                statuses: [0, 200] // Allow opaque responses
-              }
-            }
-          }
-        ]
       }
     })
   ],
