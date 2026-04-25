@@ -11,7 +11,12 @@ export default function CameraView({ onFaceDetected }: CameraViewProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const modelRef = useRef<blazeface.BlazeFaceModel | null>(null);
     const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+    const animationRef = useRef<number | null>(null);
     const faceDetectedRef = useRef(false);
+
+    // AI buffers to decouple 15fps inference from 60fps rendering
+    const targetPrediction = useRef<blazeface.NormalizedFace | null>(null);
+    const smoothBox = useRef<{ x: number, y: number, w: number, h: number } | null>(null);
 
     const [hasPermission, setHasPermission] = useState<boolean | null>(null);
     const [isModelLoading, setIsModelLoading] = useState(true);
@@ -37,89 +42,15 @@ export default function CameraView({ onFaceDetected }: CameraViewProps) {
         return () => { cancelled = true; };
     }, []);
 
-    // Draw the scanning overlay for a detected face
-    const drawOverlay = useCallback((
-        ctx: CanvasRenderingContext2D,
-        prediction: blazeface.NormalizedFace
-    ) => {
-        const [x1, y1] = prediction.topLeft as [number, number];
-        const [x2, y2] = prediction.bottomRight as [number, number];
-        const w = x2 - x1;
-        const h = y2 - y1;
+    // Animation Loop (60fps silky smooth rendering)
+    const startAnimationLoop = useCallback(() => {
+        const renderFrame = () => {
+            animationRef.current = requestAnimationFrame(renderFrame);
 
-        // Expand the bounding box slightly so brackets sit outside the face
-        const pad = 20;
-        const bx = x1 - pad;
-        const by = y1 - pad;
-        const bw = w + pad * 2;
-        const bh = h + pad * 2;
-        const bracketLen = Math.min(bw, bh) * 0.22;
-
-        ctx.strokeStyle = '#4FC3F7';
-        ctx.lineWidth = 2.5;
-        ctx.lineCap = 'round';
-
-        // Corner brackets
-        const corners: [number, number, number, number, number, number, number, number][] = [
-            // top-left
-            [bx, by + bracketLen, bx, by, bx + bracketLen, by, bx, by],
-            // top-right
-            [bx + bw - bracketLen, by, bx + bw, by, bx + bw, by + bracketLen, bx + bw, by],
-            // bottom-left
-            [bx, by + bh - bracketLen, bx, by + bh, bx + bracketLen, by + bh, bx, by + bh],
-            // bottom-right
-            [bx + bw - bracketLen, by + bh, bx + bw, by + bh, bx + bw, by + bh - bracketLen, bx + bw, by + bh],
-        ];
-
-        corners.forEach(([mx, my, cx, cy, ex, ey]) => {
-            ctx.beginPath();
-            ctx.moveTo(mx, my);
-            ctx.lineTo(cx, cy);
-            ctx.lineTo(ex, ey);
-            ctx.stroke();
-        });
-
-        // Sweeping scan line — cycles every 2 seconds
-        const scanProgress = (Date.now() % 2000) / 2000;
-        const scanY = by + bh * scanProgress;
-        const scanGradient = ctx.createLinearGradient(bx, scanY - 24, bx, scanY + 24);
-        scanGradient.addColorStop(0, 'rgba(79, 195, 247, 0)');
-        scanGradient.addColorStop(0.5, 'rgba(79, 195, 247, 0.45)');
-        scanGradient.addColorStop(1, 'rgba(79, 195, 247, 0)');
-        ctx.fillStyle = scanGradient;
-        ctx.fillRect(bx, scanY - 24, bw, 48);
-
-        // Landmark dots: right eye [0], left eye [1], nose [2]
-        const landmarks = prediction.landmarks as number[][];
-        ctx.fillStyle = '#4FC3F7CC';
-        [0, 1, 2].forEach(i => {
-            const [lx, ly] = landmarks[i];
-            ctx.beginPath();
-            ctx.arc(lx, ly, 3.5, 0, Math.PI * 2);
-            ctx.fill();
-        });
-
-        // "SCANNING" label below brackets (un-mirrored to counteract CSS scaleX)
-        ctx.save();
-        ctx.translate(bx + bw / 2, by + bh + 18);
-        ctx.scale(-1, 1);
-        ctx.font = 'bold 11px monospace';
-        ctx.fillStyle = '#4FC3F7CC';
-        ctx.textAlign = 'center';
-        ctx.fillText('SCANNING', 0, 0);
-        ctx.restore();
-    }, []);
-
-    // Detection loop — runs at ~15fps to save battery on mobile
-    const startDetectionLoop = useCallback(() => {
-        intervalRef.current = setInterval(async () => {
-            const video = videoRef.current;
             const canvas = canvasRef.current;
-            const model = modelRef.current;
+            const video = videoRef.current;
+            if (!canvas || !video || video.readyState < 2) return;
 
-            if (!video || !canvas || !model || video.readyState < 2) return;
-
-            // Keep canvas dimensions in sync with video
             if (canvas.width !== video.videoWidth) {
                 canvas.width = video.videoWidth;
                 canvas.height = video.videoHeight;
@@ -127,29 +58,108 @@ export default function CameraView({ onFaceDetected }: CameraViewProps) {
 
             const ctx = canvas.getContext('2d');
             if (!ctx) return;
+
+            // Clear entire canvas perfectly before new paint
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+            const target = targetPrediction.current;
+            if (!target) {
+                smoothBox.current = null;
+                return;
+            }
+
+            const [x1, y1] = target.topLeft as [number, number];
+            const [x2, y2] = target.bottomRight as [number, number];
+            const tw = x2 - x1;
+            const th = y2 - y1;
+
+            // Instantiate or Lerp (Linear Interpolate) for smooth bracket gliding
+            if (!smoothBox.current) {
+                smoothBox.current = { x: x1, y: y1, w: tw, h: th };
+            } else {
+                smoothBox.current.x += (x1 - smoothBox.current.x) * 0.15;
+                smoothBox.current.y += (y1 - smoothBox.current.y) * 0.15;
+                smoothBox.current.w += (tw - smoothBox.current.w) * 0.15;
+                smoothBox.current.h += (th - smoothBox.current.h) * 0.15;
+            }
+
+            const { x, y, w, h } = smoothBox.current;
+
+            const pad = 20;
+            const bx = x - pad;
+            const by = y - pad;
+            const bw = w + pad * 2;
+            const bh = h + pad * 2;
+            const bracketLen = Math.min(bw, bh) * 0.22;
+
+            ctx.strokeStyle = 'rgba(79, 195, 247, 0.6)'; // Softer opacity
+            ctx.lineWidth = 2.5;
+            ctx.lineCap = 'round';
+
+            const corners: [number, number, number, number, number, number, number, number][] = [
+                [bx, by + bracketLen, bx, by, bx + bracketLen, by, bx, by],
+                [bx + bw - bracketLen, by, bx + bw, by, bx + bw, by + bracketLen, bx + bw, by],
+                [bx, by + bh - bracketLen, bx, by + bh, bx + bracketLen, by + bh, bx, by + bh],
+                [bx + bw - bracketLen, by + bh, bx + bw, by + bh, bx + bw, by + bh - bracketLen, bx + bw, by + bh],
+            ];
+
+            corners.forEach(([mx, my, cx, cy, ex, ey]) => {
+                ctx.beginPath();
+                ctx.moveTo(mx, my);
+                ctx.lineTo(cx, cy);
+                ctx.lineTo(ex, ey);
+                ctx.stroke();
+            });
+
+            // Slower, smoother Sweeping scan gradient (cycles every 3 seconds)
+            const scanProgress = (Date.now() % 3000) / 3000;
+            const scanY = by + bh * scanProgress;
+            const scanGradient = ctx.createLinearGradient(bx, scanY - 30, bx, scanY + 30);
+            scanGradient.addColorStop(0, 'rgba(79, 195, 247, 0)');
+            scanGradient.addColorStop(0.5, 'rgba(79, 195, 247, 0.35)'); // Less harsh
+            scanGradient.addColorStop(1, 'rgba(79, 195, 247, 0)');
+            ctx.fillStyle = scanGradient;
+            ctx.fillRect(bx, scanY - 30, bw, 60);
+
+            // Print un-mirrored SCANNING text to counteract css flip
+            ctx.save();
+            ctx.translate(bx + bw / 2, by + bh + 18);
+            ctx.scale(-1, 1);
+            ctx.font = 'bold 11px monospace';
+            ctx.fillStyle = 'rgba(79, 195, 247, 0.7)';
+            ctx.textAlign = 'center';
+            ctx.fillText('SCANNING', 0, 0);
+            ctx.restore();
+
+        };
+        renderFrame();
+    }, []);
+
+    // Inference Loop (~15fps minimal battery draw)
+    const startInferenceLoop = useCallback(() => {
+        intervalRef.current = setInterval(async () => {
+            const video = videoRef.current;
+            const model = modelRef.current;
+
+            if (!video || !model || video.readyState < 2) return;
+
             try {
-                // returnTensors: false gives plain JS objects — simpler and avoids memory leaks
                 const predictions = await model.estimateFaces(video, false);
-
                 if (predictions.length > 0) {
+                    targetPrediction.current = predictions[0] as blazeface.NormalizedFace;
                     setFacePresent(true);
-                    drawOverlay(ctx, predictions[0] as blazeface.NormalizedFace);
 
-                    // Fire onFaceDetected exactly once
                     if (!faceDetectedRef.current) {
                         faceDetectedRef.current = true;
                         onFaceDetected();
                     }
                 } else {
+                    targetPrediction.current = null;
                     setFacePresent(false);
                 }
-            } catch {
-                // Silently skip — can happen on first frame before video is fully ready
-            }
-        }, 66); // ~15fps
-    }, [drawOverlay, onFaceDetected]);
+            } catch { }
+        }, 66);
+    }, [onFaceDetected]);
 
     // Start camera once model is loaded
     useEffect(() => {
@@ -167,7 +177,8 @@ export default function CameraView({ onFaceDetected }: CameraViewProps) {
                     videoRef.current.play().catch(e => console.error(e));
                 }
                 setHasPermission(true);
-                startDetectionLoop();
+                startAnimationLoop();
+                startInferenceLoop();
             } catch (err) {
                 console.error('Camera error', err);
                 setHasPermission(false);
@@ -178,9 +189,10 @@ export default function CameraView({ onFaceDetected }: CameraViewProps) {
 
         return () => {
             if (intervalRef.current) clearInterval(intervalRef.current);
+            if (animationRef.current) cancelAnimationFrame(animationRef.current);
             stream?.getTracks().forEach(track => track.stop());
         };
-    }, [isModelLoading, startDetectionLoop]);
+    }, [isModelLoading, startInferenceLoop, startAnimationLoop]);
 
     // --- Render ---
 
